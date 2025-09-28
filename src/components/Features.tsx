@@ -19,9 +19,9 @@ const Features = () => {
       color: "text-teal-400"
     },
     {
-      iconClass: "fa-solid fa-award",
-      title: "Certificates",
-      description: "Earn industry-recognized certificates upon course completion to boost your career.",
+      iconClass: "fa-solid fa-book",
+      title: "Written Tutorials",
+      description: "Access comprehensive written guides to complement your learning experience.",
       color: "text-teal-400"
     },
     {
@@ -39,37 +39,40 @@ const Features = () => {
   ];
 
   return (
-    <div className="bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-white py-8">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Powerful Features for
-            <span className="text-teal-500 ml-2">Effective Learning</span>
-          </h1>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover tools designed to accelerate your learning journey and help you reach your goals faster.
-          </p>
-        </div>
-      </section>
-
-      {/* Features Grid */}
-      <section className="py-8">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
-                <div className={`text-2xl mb-4 ${feature.color}`}>
-                  <i className={feature.iconClass}></i>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-sm text-gray-600">{feature.description}</p>
-              </div>
-            ))}
+    <section id ="features" 
+      className="py-16 bg-blue-50 min-h-screen flex items-center justify-center">
+      <div className="bg-blue-50">
+        {/* Hero Section */}
+        <section className="bg-blue-50 py-8">
+          <div className="max-w-6xl mx-auto px-4 text-center">
+            <h1 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Powerful Features for
+              <span className="text-teal-400 ml-2">Effective Learning</span>
+            </h1>
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+              Discover tools designed to accelerate your learning journey and help you reach your goals faster.
+            </p>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        {/* Features Grid */}
+        <section className="py-8">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {features.map((feature, index) => (
+                <div key={index} className="bg-blue-50 p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
+                  <div className={`text-2xl mb-4 ${feature.color}`}>
+                    <i className={feature.iconClass}></i>
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                  <p className="text-sm text-gray-600">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
   );
 };
 
