@@ -1,5 +1,5 @@
 import type{ FC } from "react";
-import learnImage from "../assets/learnly.jpg";
+import learnImage from "../../assets/learnly.jpg";
 
 const Home: FC = () => {
   return (
