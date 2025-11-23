@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import apiService from "../../../services/apiService";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -18,9 +19,11 @@ const SignUp = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
 
+    // --- VALIDATION ---
     if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
       setError("All fields are required.");
       return;
@@ -31,8 +34,26 @@ const SignUp = () => {
       return;
     }
 
-    console.log("User Registered:", formData);
-    navigate("/signin");
+    try {
+      // --- API CALL: ADJUST TO MATCH YOUR ENDPOINT ---
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      };
+
+      await apiService.post("/Auth/register", payload); // <-- YOUR BACKEND
+
+      navigate("/signin");
+    } catch (err: any) {
+      console.error("Registration Error:", err);
+
+      if (err.response?.data) {
+        setError(err.response.data.message || "Registration failed.");
+      } else {
+        setError("Unable to connect to server.");
+      }
+    }
   };
 
   return (

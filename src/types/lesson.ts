@@ -1,6 +1,6 @@
 export interface Lesson {
-  id: string;
-  courseId: string;
+  id: number;
+  courseId: number;
   title: string;
   content: string; // textual content or summary
   videoUrl?: string; // optional video link

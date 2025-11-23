@@ -1,17 +1,21 @@
-import type{ FC } from "react";
+import type { FC } from "react";
 import { Link } from "react-router-dom";
 import defaultThumbnail from "../assets/default-course.png";
 
 interface CourseCardProps {
-  id?: string; // optional, for linking to detail page
+  id?: string;
   title: string;
   description: string;
-  thumbnail?: string; // optional, will use default if not provided
+  thumbnail?: string;
 }
 
 const CourseCard: FC<CourseCardProps> = ({ id, title, description, thumbnail }) => {
   return (
-    <div className="bg-white rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col">
+    <div
+      className="bg-blue-50 rounded-lg p-4 flex flex-col shadow-md 
+                 transition-transform duration-300
+                 hover:shadow-2xl hover:scale-105 hover:-translate-y-2"
+    >
       {/* Thumbnail */}
       <img
         src={thumbnail || defaultThumbnail}
@@ -23,7 +27,10 @@ const CourseCard: FC<CourseCardProps> = ({ id, title, description, thumbnail }) 
       <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
       <p className="text-gray-600 text-sm flex-1">{description}</p>
 
-      {/* Button / Link */}
+      <button className="w-full bg-teal-400 text-gray-800 py-2 px-3 rounded-md hover:bg-teal-500 transition-colors font-medium text-sm">
+        Enroll Now
+      </button>
+
       {id && (
         <Link
           to={`/courses/${id}`}

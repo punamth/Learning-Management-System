@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000"; // replace with your backend base URL
+const API_URL = "http://localhost:5001/api"; // replace with your backend base URL
 
 export interface AuthResponse {
   token: string;
@@ -20,12 +20,12 @@ export interface LoginData {
 
 export const authRepository = {
   register: async (data: RegisterData): Promise<AuthResponse> => {
-    const res = await axios.post(`${API_URL}/auth/register`, data);
+    const res = await axios.post(`${API_URL}/Auth/register`, data);
     return res.data;
   },
 
   login: async (data: LoginData): Promise<AuthResponse> => {
-    const res = await axios.post(`${API_URL}/auth/login`, data);
+    const res = await axios.post(`${API_URL}/Auth/login`, data);
     return res.data;
   },
 };

@@ -18,7 +18,7 @@ const CourseCatalog: FC = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await axios.get("/api/courses");
+        const res = await axios.get("/api/Courses");
         const coursesData = Array.isArray(res.data)
           ? res.data
           : res.data?.courses || [];

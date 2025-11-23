@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getUserProgress, updateUserProgress, type Progress } from "../api/progressRepository";
+import { getUserProgress, updateUserProgress, type Progress } from "../repositories/progressRepository";
 
 interface ProgressState {
   progress: Progress[];
