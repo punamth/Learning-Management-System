@@ -1,39 +1,30 @@
-import { BrowserRouter as Router, Routes, Route, Outlet, useLocation } from "react-router-dom";
-import Home from './components/pages/Home';
-import Features from './components/pages/Features'; 
-import CourseCatalog from './components/pages/CourseCatalog';
-import CourseDetail from './components/pages/CourseDetail';
-import LessonView from './components/pages/LessonView';
-import TestView from './components/pages/TestView';
-import Navbar from './components/NavBar';
-import Footer from './components/pages/Footer';
-import SignIn from './components/pages/auth/SignIn';
-import SignUp from './components/pages/auth/SignUp';
-import { AuthProvider } from './contexts/AuthContext'; 
-
-// Admin imports
-import AdminLayout from './components/pages/admin/AdminLayout';
-import AdminDashboard from './components/pages/admin/AdminDashboard';
-import ManageCourses from './components/pages/admin/ManageCourses';
-import CreateCourse from './components/pages/admin/CreateCourse';
-import EditCourse from './components/pages/admin/EditCourse';
-import ManageLessons from './components/pages/admin/ManageLessons';
+import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
+import Home from './presentation/components/pages/Home';
+import Features from './presentation/components/pages/Features'; 
+import CourseCatalog from './presentation/components/pages/CourseCatalog';
+import CourseDetail from './presentation/components/pages/CourseDetail';
+import LessonView from './presentation/components/pages/LessonView';
+import TestView from './presentation/components/pages/TestView';
+import Navbar from './presentation/components/NavBar';
+import Footer from './presentation/components/pages/Footer';
+import SignIn from './presentation/components/auth/SignIn';
+import SignUp from './presentation/components/auth/SignUp';
+import { AuthProvider } from './presentation/contexts/AuthContext'; 
+import AdminRoutes from './presentation/admin/routes/AdminRoutes';
 
 // Layout wrapper with Navbar + Footer
 const Layout = () => {
-  const location = useLocation();
-  const hideLayout = ["/signin", "/signup"].includes(location.pathname);
-
   return (
     <>
-      {!hideLayout && <Navbar />}
+      <Navbar />
       <main>
         <Outlet />
       </main>
-      {!hideLayout && <Footer />}
+      <Footer />
     </>
   );
 };
+
 
 function App() {
   return (
@@ -70,14 +61,8 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
 
-          {/* Admin routes */}
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="courses" element={<ManageCourses />} />
-            <Route path="courses/create" element={<CreateCourse />} />
-            <Route path="courses/:id/edit" element={<EditCourse />} />
-            <Route path="courses/:courseId/lessons" element={<ManageLessons />} />
-          </Route>
+          {/*Admin routes */}
+          <Route path="/admin" element={<AdminRoutes />} />
         </Routes>
       </Router>
     </AuthProvider>
